@@ -1,3 +1,5 @@
+#from pudb import set_trace; set_trace() #debugging
+
 class Node:
 	def __init__(self):
 		self.data = None
@@ -34,18 +36,17 @@ class LinkedList:
 		self.size += 1 
 
 	def insert(self, data, index): #first list element is at index 0
-		if self.size == 0:
-			n = Node()
-			n.data = data
-			self.head = n
-			self.tail = n
-			self.size += 1
+		if index == self.size:
+			self.push_back(data)
+		elif index == 0:
+			self.push_front(data)
 		elif index <= self.size:
 			n = Node()
 			n.data = data
 			node = self.head
-			for i in range(0, index):
+			for i in range(0, index - 1):
 				node = node.next
+
 			a = node
 			c = node.next
 			a.next = n
@@ -60,20 +61,22 @@ class LinkedList:
 		counter = 0
 		while node:
 			str += '{},'.format(node.data)
-			node = node.next
 			print counter, node.data
 			counter += 1
+			node = node.next
 
 		#print str
 
-ll = LinkedList()
-for i in range(0,40):
-	ll.push_back(i)
-for i in range(0, 99):
-	d = i * 4
-	ll.insert("inserted at {} position".format(d),d)
 
+def test():
+	ll = LinkedList()
+	for i in range(0,400):
+		ll.push_back(i)
 
+	for i in range(0, 99):
+		d = i * 4
+		ll.insert("inserted at {} position".format(d),d)
 
+	ll.printList()
 
-ll.printList()
+test()
