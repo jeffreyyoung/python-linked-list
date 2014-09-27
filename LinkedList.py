@@ -33,20 +33,47 @@ class LinkedList:
 			self.tail = n
 		self.size += 1 
 
+	def insert(self, data, index): #first list element is at index 0
+		if self.size == 0:
+			n = Node()
+			n.data = data
+			self.head = n
+			self.tail = n
+			self.size += 1
+		elif index <= self.size:
+			n = Node()
+			n.data = data
+			node = self.head
+			for i in range(0, index):
+				node = node.next
+			a = node
+			c = node.next
+			a.next = n
+			n.next = c
+			self.size += 1
+		else:
+			print "index too large, index ={}, size={}".format(index, self.size)
+
 	def printList(self):
 		node = self.head
 		str = ""
+		counter = 0
 		while node:
 			str += '{},'.format(node.data)
 			node = node.next
-		print str
+			print counter, node.data
+			counter += 1
+
+		#print str
 
 ll = LinkedList()
-ll.push_back(99)
-ll.push_front(1)
-ll.push_front("asdf")
-ll.push_front(3)
-ll.push_front(4)
-ll.push_back(5)
+for i in range(0,40):
+	ll.push_back(i)
+for i in range(0, 99):
+	d = i * 4
+	ll.insert("inserted at {} position".format(d),d)
+
+
+
 
 ll.printList()
