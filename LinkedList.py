@@ -10,28 +10,28 @@ class LinkedList:
 		self.head = None
 		self.tail = None
 
-	def addFront(self, data):
+	def push_front(self, data):
 		n = Node()
 		n.data = data
-		if self.head is None:
+		if self.size is 0:
 			self.head = n
 			self.tail = n
 		else:
 			n.next = self.head
 			self.head = n
-		print "head:", self.head, ",tail: ", self.tail
+		self.size += 1
 
 
-	def addToTail(self, data):
+	def push_back(self, data):
 		n = Node()
 		n.data = data
-		if self.tail is None:
+		if self.size is 0:
 			self.head = n
 			self.tail = n
 		else:
 			self.tail.next = n
 			self.tail = n
-
+		self.size += 1 
 
 	def printList(self):
 		node = self.head
@@ -42,10 +42,11 @@ class LinkedList:
 		print str
 
 ll = LinkedList()
-ll.addFront(1)
-ll.addFront("asdf")
-ll.addFront(3)
-ll.addFront(4)
-ll.addToTail(5)
+ll.push_back(99)
+ll.push_front(1)
+ll.push_front("asdf")
+ll.push_front(3)
+ll.push_front(4)
+ll.push_back(5)
 
 ll.printList()
