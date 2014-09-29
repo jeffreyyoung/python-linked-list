@@ -1,4 +1,4 @@
 python-linked-list
 ==================
 
-A linked list written in python
+A simple linked list implementation written in python
